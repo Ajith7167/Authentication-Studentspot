@@ -34,16 +34,11 @@
 
 .signup-container {
   width: 100%;
-  max-width: 480px;
-  padding: 2.5rem;
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition-standard);
-  animation: fadeIn 0.5s ease-out;
-  position: relative;
-  overflow: hidden;
+  max-width: 600px; /* increase width */
+  margin-left: auto; /* shift to right */
+  margin-right: 2rem; /* space from right edge */
 }
+
 
 .signup-container::before {
   content: '';
@@ -337,4 +332,53 @@
 :focus:not(:focus-visible) {
   outline: none;
   box-shadow: none;
+}
+.auth-page {
+  display:flex;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.auth-left {
+  flex: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-right {
+  flex: 0.8;
+  background: linear-gradient(135deg, #3a8ef6, #7e5bef);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.promo-content {
+  max-width: 420px;
+}
+
+.promo-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+}
+
+.promo-content p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 1200px) {
+  .auth-page {
+    flex-direction: column;
+  }
+
+  .auth-right {
+    padding: 9rem;
+  }
 }

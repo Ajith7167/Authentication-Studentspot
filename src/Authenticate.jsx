@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GraduationCap, Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
 import './Authenticate.css'; 
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -54,98 +55,105 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-wrapper">
-      <div className="signup-container">
-        <div className="signup-header">
-          <img src="/logo.png" alt="Logo" className="icon" />
-          <h2>StudentSpot</h2>
-          <p>Create your account to get started</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="signup-form">
-          <div className="form-group">
-            <label htmlFor="name">Full Name</label>
-            <div className="input-wrapper">
-              <User className="input-icon" />
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="John Doe"
-              />
+    <div className="auth-page">
+      <div className="auth-left">
+        <div className="signup-wrapper">
+          <div className="signup-container">
+            <div className="signup-header">
+              <img src="/logo.png" className="icon" alt="logo"/>
+              <h2>StudentSpot</h2>
+              <p>Create your account to get started</p>
             </div>
-            {errors.name && <p className="error">{errors.name}</p>}
-          </div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <div className="input-wrapper">
-              <Mail className="input-icon" />
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="you@example.com"
-              />
-            </div>
-            {errors.email && <p className="error">{errors.email}</p>}
-          </div>
+            <form onSubmit={handleSubmit} className="signup-form">
+              <div className="form-group">
+                <label htmlFor="name">Full Name</label>
+                <div className="input-wrapper">
+                  <User className="input-icon" />
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Ajith Vemula"
+                  />
+                </div>
+                {errors.name && <p className="error">{errors.name}</p>}
+              </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <div className="input-wrapper">
-              <Lock className="input-icon" />
-              <input
-                id="password"
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="••••••••"
-              />
-              <button
-                type="button"
-                className="toggle-visibility"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff /> : <Eye />}
+              <div className="form-group">
+                <label htmlFor="email">Email Address</label>
+                <div className="input-wrapper">
+                  <Mail className="input-icon" />
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                  />
+                </div>
+                {errors.email && <p className="error">{errors.email}</p>}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <div className="input-wrapper">
+                  <Lock className="input-icon" />
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    className="toggle-visibility"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff /> : <Eye />}
+                  </button>
+                </div>
+                {errors.password && <p className="error">{errors.password}</p>}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <div className="input-wrapper">
+                  <Lock className="input-icon" />
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type={showPassword ? 'text' : 'password'}
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="••••••••"
+                  />
+                </div>
+                {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+              </div>
+
+              <button type="submit" disabled={isLoading} className="submit-button">
+                {isLoading ? <span className="loading-spinner"></span> : 'Create Account'}
               </button>
-            </div>
-            {errors.password && <p className="error">{errors.password}</p>}
+            </form>
+
+            <p className="footer-note">
+              Already have an account? <a href="#">Sign in</a>
+            </p>
           </div>
+        </div>
+      </div>
 
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <div className="input-wrapper">
-              <Lock className="input-icon" />
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type={showPassword ? 'text' : 'password'}
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                placeholder="••••••••"
-              />
-            </div>
-            {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
-          </div>
-
-          <button type="submit" disabled={isLoading} className="submit-button">
-            {isLoading ? (
-              <span className="loading-spinner"></span>
-            ) : (
-              'Create Account'
-            )}
-          </button>
-        </form>
-
-        <p className="footer-note">
-          Already have an account? <a href="#">Sign in</a>
-        </p>
+      <div className="auth-right">
+        <div className="promo-content">
+          <h1>Empowering Students to Learn Smarter</h1>
+          <p>Sign up and explore personalized learning with StudentSpot.</p>
+        </div>
       </div>
     </div>
   );
